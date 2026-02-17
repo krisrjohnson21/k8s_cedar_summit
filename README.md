@@ -111,7 +111,7 @@ kubectl get pods -w    # Watch pods come up
 
 ## Cost
 
-EKS cluster (~$0.10/hr) + 2x t3.small nodes (~$0.04/hr) = **~$3.50/day**. Run `tofu destroy` in `infra/` when not actively working on it.
+EKS cluster ($0.10/hr) + 2x t3.small nodes ($0.04/hr) = **~$3.50/day**. Run `tofu destroy` in `infra/` when not actively working on it.
 
 ## Technologies
 
