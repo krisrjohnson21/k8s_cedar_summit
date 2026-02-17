@@ -1,0 +1,12 @@
+{
+  "name": "cedar-summit",
+  "version": "1.0.0",
+  "description": "Cedar Summit backend service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
