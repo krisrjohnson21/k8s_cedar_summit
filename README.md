@@ -36,6 +36,7 @@ k8s_cedar_summit/
 ├── bootstrap/              # Remote state backend (run first)
 │   ├── providers.tf
 │   └── s3.tf               # S3 bucket + DynamoDB lock table
+│   └── variables.tf
 ├── infra/                  # EKS cluster + supporting infra
 │   ├── providers.tf
 │   ├── vpc.tf              # VPC via terraform-aws-modules/vpc
@@ -118,4 +119,4 @@ EKS cluster (~$0.10/hr) + 2x t3.small nodes (~$0.04/hr) = **~$3.50/day**. Run `t
 - **Cloud:** AWS (EKS, ECR, VPC, S3, DynamoDB)
 - **Container:** Docker with multi-stage builds
 - **Orchestration:** Kubernetes 1.31
-- **Runtime:** Node.js 20 / Express
+- **Runtime:** Node.js 22 / Express
