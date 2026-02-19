@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: kubeconform
+        name: kubeconform
+        entry: kubeconform -strict
+        language: system
+        files: ^manifests/.*\.yaml$
+  - repo: https://github.com/tofuutils/pre-commit-opentofu
+    rev: v2.2.0
+    hooks:
+      - id: tofu_fmt
+      - id: tofu_validate
+        args: ["--args=-no-color"]
