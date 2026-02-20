@@ -23,4 +23,13 @@ module "cedar_summit_eks" {
 
   # Give your IAM user cluster admin access
   enable_cluster_creator_admin_permissions = true
+
+  # Add-ons
+  addons = {
+    vpc-cni = {
+      before_compute = true
+    }
+    coredns    = {}
+    kube-proxy = {}
+  }
 }
