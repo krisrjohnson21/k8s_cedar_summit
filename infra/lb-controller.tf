@@ -32,6 +32,8 @@ module "lb_controller_irsa" {
 
 ## Helm release
 resource "helm_release" "lb_controller" {
+  depends_on = [module.cedar_summit_eks]
+
   name       = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
