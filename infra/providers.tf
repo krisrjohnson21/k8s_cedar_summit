@@ -3,7 +3,7 @@ terraform {
 
   backend "s3" {
     bucket         = "cedar-summit-tofu"
-    key            = "state/aws-base/terraform.tfstate"
+    key            = "state/infra/terraform.tfstate"
     region         = "us-west-2"
     dynamodb_table = "tofu-statelock-cedar-summit"
   }
