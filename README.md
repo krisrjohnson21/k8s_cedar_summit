@@ -45,6 +45,10 @@ k8s_cedar_summit/
 │   ├── lb-controller.tf    # AWS LB Controller (IRSA + Helm chart)
 │   ├── variables.tf
 │   └── outputs.tf
+├── restricted/             # Sensitive IAM & OIDC config (separate state)
+│   ├── gh-oidc.tf          # GitHub Actions OIDC provider, IAM role, EKS access
+│   ├── providers.tf
+│   └── variables.tf
 ├── app/                    # Containerized application
 │   ├── Dockerfile
 │   ├── .dockerignore
@@ -101,7 +105,14 @@ Second apply — uncomment the `helm_release` block, then:
 tofu apply    # Installs the AWS Load Balancer Controller
 ```
 
-### 3. Build and push the container image
+### 3. Provision restricted resources
+```bash
+cd restricted
+tofu init
+tofu apply
+```
+
+### 4. Build and push the container image
 
 ```bash
 # Authenticate Docker to ECR
@@ -114,7 +125,7 @@ docker tag cedar-summit:latest $(tofu -chdir=../infra output -raw ecr_repository
 docker push $(tofu -chdir=../infra output -raw ecr_repository_url):latest
 ```
 
-### 4. Deploy to Kubernetes
+### 5. Deploy to Kubernetes
 
 The deployment manifest uses an `ECR_REPOSITORY_URL` placeholder. Replace it with your actual ECR URL before applying:
 
